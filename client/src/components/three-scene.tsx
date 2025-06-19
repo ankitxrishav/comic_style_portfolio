@@ -38,53 +38,80 @@ function FloatingModel({ mousePosition, scrollY }: FloatingModelProps) {
       // Scale based on scroll
       const scale = 1 + Math.sin(scrollProgress * Math.PI * 4) * 0.1;
 
-      // Draw animated geometric shape
+      // Draw manga-style floating elements
       const centerX = xOffset;
       const centerY = canvas.height / 2 + yOffset;
-      const radius = 60 * scale;
+      const radius = 40 * scale;
 
-      // Draw outer ring
-      ctx.strokeStyle = 'rgba(6, 182, 212, 0.6)';
+      // Draw manga-style speech bubble
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+      ctx.strokeStyle = 'rgba(0, 0, 0, 0.8)';
       ctx.lineWidth = 3;
-      ctx.beginPath();
-      ctx.arc(centerX, centerY, radius + 20, rotation + mouseInfluence.x, rotation + mouseInfluence.x + Math.PI * 1.5);
-      ctx.stroke();
-
-      // Draw inner shape
-      ctx.fillStyle = 'rgba(6, 182, 212, 0.3)';
-      ctx.strokeStyle = 'rgba(6, 182, 212, 0.8)';
-      ctx.lineWidth = 2;
       
       ctx.beginPath();
-      for (let i = 0; i < 6; i++) {
-        const angle = (rotation + mouseInfluence.y) + (i * Math.PI / 3);
-        const x = centerX + Math.cos(angle) * radius;
-        const y = centerY + Math.sin(angle) * radius;
-        
-        if (i === 0) ctx.moveTo(x, y);
-        else ctx.lineTo(x, y);
-      }
+      ctx.ellipse(centerX, centerY, radius + 20, radius + 10, rotation + mouseInfluence.x, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+
+      // Add speech bubble tail
+      ctx.beginPath();
+      ctx.moveTo(centerX - 20, centerY + radius);
+      ctx.lineTo(centerX - 35, centerY + radius + 15);
+      ctx.lineTo(centerX - 10, centerY + radius + 5);
       ctx.closePath();
       ctx.fill();
       ctx.stroke();
 
-      // Draw center sphere
-      ctx.fillStyle = 'rgba(6, 182, 212, 0.9)';
-      ctx.beginPath();
-      ctx.arc(centerX, centerY, 15 * scale, 0, Math.PI * 2);
-      ctx.fill();
+      // Draw manga text inside bubble
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
+      ctx.font = 'bold 16px Bangers, cursive';
+      ctx.textAlign = 'center';
+      ctx.fillText('POW!', centerX, centerY);
 
-      // Draw orbiting particles
-      for (let i = 0; i < 3; i++) {
-        const orbitAngle = rotation * (1 + i * 0.5) + mouseInfluence.x;
-        const orbitRadius = radius + 30 + i * 15;
-        const particleX = centerX + Math.cos(orbitAngle) * orbitRadius;
-        const particleY = centerY + Math.sin(orbitAngle) * orbitRadius;
+      // Draw action lines radiating from center
+      ctx.strokeStyle = 'rgba(0, 0, 0, 0.6)';
+      ctx.lineWidth = 2;
+      for (let i = 0; i < 8; i++) {
+        const angle = (rotation + mouseInfluence.y) + (i * Math.PI / 4);
+        const startX = centerX + Math.cos(angle) * (radius + 25);
+        const startY = centerY + Math.sin(angle) * (radius + 25);
+        const endX = centerX + Math.cos(angle) * (radius + 45);
+        const endY = centerY + Math.sin(angle) * (radius + 45);
         
-        ctx.fillStyle = `rgba(6, 182, 212, ${0.7 - i * 0.2})`;
         ctx.beginPath();
-        ctx.arc(particleX, particleY, 5, 0, Math.PI * 2);
-        ctx.fill();
+        ctx.moveTo(startX, startY);
+        ctx.lineTo(endX, endY);
+        ctx.stroke();
+      }
+
+      // Draw floating manga symbols
+      const symbols = ['★', '♦', '●', '▲'];
+      ctx.fillStyle = 'rgba(255, 100, 100, 0.7)';
+      ctx.font = 'bold 20px Arial';
+      
+      for (let i = 0; i < symbols.length; i++) {
+        const orbitAngle = rotation * (1 + i * 0.3) + mouseInfluence.x + (i * Math.PI / 2);
+        const orbitRadius = radius + 60 + Math.sin(rotation * 2 + i) * 10;
+        const symbolX = centerX + Math.cos(orbitAngle) * orbitRadius;
+        const symbolY = centerY + Math.sin(orbitAngle) * orbitRadius;
+        
+        ctx.save();
+        ctx.translate(symbolX, symbolY);
+        ctx.rotate(rotation + i);
+        ctx.fillText(symbols[i], 0, 0);
+        ctx.restore();
+      }
+
+      // Draw speed lines for dynamic effect
+      ctx.strokeStyle = 'rgba(0, 0, 0, 0.3)';
+      ctx.lineWidth = 1;
+      for (let i = 0; i < 5; i++) {
+        const lineY = centerY - 100 + i * 40;
+        const lineLength = 200 + Math.sin(rotation + i) * 50;
+        ctx.beginPath();
+        ctx.moveTo(centerX - lineLength/2, lineY);
+        ctx.lineTo(centerX + lineLength/2, lineY);
+        ctx.stroke();
       }
 
       animationRef.current = requestAnimationFrame(animate);
