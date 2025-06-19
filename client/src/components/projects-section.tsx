@@ -51,73 +51,48 @@ export default function ProjectsSection() {
   ];
 
   return (
-    <section id="projects" className="section py-20 bg-gradient-to-br from-slate-800 via-purple-900/30 to-slate-900 text-white relative overflow-hidden">
-      {/* Background effects */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-10 right-20 w-40 h-40 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-10 left-20 w-60 h-60 bg-gradient-to-r from-cyan-500 to-green-500 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1.5s'}}></div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+    <section id="projects" className="section py-20 bg-slate-50">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 gradient-text">🚀 Featured Projects</h2>
-          <p className="text-xl text-purple-200 max-w-3xl mx-auto leading-relaxed">
-            Revolutionary AI solutions that push the boundaries of what's possible in machine learning.
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">Featured Projects</h2>
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            A collection of ML projects showcasing my expertise in various domains and technologies.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <div key={index} className="project-card group relative overflow-hidden rounded-3xl border border-purple-500/30 hover:border-purple-400/60 transition-all duration-500">
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-pink-900/20 to-cyan-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              <div className="relative overflow-hidden rounded-t-3xl">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-              </div>
-              
-              <div className="relative p-6 space-y-4">
-                <h3 className="text-xl font-bold text-white group-hover:text-purple-300 transition-colors">{project.title}</h3>
-                <p className="text-slate-300 leading-relaxed">{project.description}</p>
-                
+            <div key={index} className="project-card bg-white rounded-2xl shadow-lg overflow-hidden">
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-6 space-y-4">
+                <h3 className="text-xl font-semibold">{project.title}</h3>
+                <p className="text-slate-600">{project.description}</p>
                 <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag, tagIndex) => {
-                    const colors = [
-                      'from-purple-600 to-pink-600',
-                      'from-pink-600 to-cyan-600', 
-                      'from-cyan-600 to-green-600',
-                      'from-green-600 to-purple-600'
-                    ];
-                    const colorClass = colors[tagIndex % colors.length];
-                    return (
-                      <span
-                        key={tagIndex}
-                        className={`bg-gradient-to-r ${colorClass} text-white px-3 py-1 rounded-full text-sm font-semibold transform hover:scale-105 transition-transform cursor-default`}
-                      >
-                        {tag}
-                      </span>
-                    );
-                  })}
+                  {project.tags.map((tag, tagIndex) => (
+                    <span
+                      key={tagIndex}
+                      className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
-                
-                <div className="flex space-x-4 pt-2">
+                <div className="flex space-x-4">
                   <a
                     href={project.github}
-                    className="flex items-center space-x-2 text-purple-400 hover:text-purple-300 transition-colors font-semibold"
+                    className="text-blue-600 hover:text-blue-700 transition-colors"
                   >
-                    <i className="fab fa-github text-lg"></i>
-                    <span>Code</span>
+                    <i className="fab fa-github"></i> Code
                   </a>
                   <a
                     href={project.demo}
-                    className="flex items-center space-x-2 text-cyan-400 hover:text-cyan-300 transition-colors font-semibold"
+                    className="text-blue-600 hover:text-blue-700 transition-colors"
                   >
-                    <i className="fas fa-external-link-alt"></i>
-                    <span>Demo</span>
+                    <i className="fas fa-external-link-alt"></i> Demo
                   </a>
                 </div>
               </div>

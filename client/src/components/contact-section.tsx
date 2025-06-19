@@ -38,18 +38,12 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="section py-20 bg-gradient-to-br from-slate-900 via-cyan-900/20 to-slate-800 text-white relative overflow-hidden">
-      {/* Background effects */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-20 right-10 w-40 h-40 bg-gradient-to-r from-cyan-500 to-green-500 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 left-10 w-60 h-60 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1.5s'}}></div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+    <section id="contact" className="section py-20 bg-slate-900 text-white">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 gradient-text">💬 Let's Connect</h2>
-          <p className="text-xl text-cyan-200 max-w-3xl mx-auto leading-relaxed">
-            Ready to revolutionize your AI strategy? Let's build the future together.
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">Let's Connect</h2>
+          <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            Interested in collaborating or discussing ML opportunities? I'd love to hear from you.
           </p>
         </div>
 

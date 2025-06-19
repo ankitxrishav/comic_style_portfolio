@@ -35,18 +35,12 @@ export default function JourneySection() {
   ];
 
   return (
-    <section id="journey" className="section py-20 bg-gradient-to-br from-slate-900 via-pink-900/20 to-slate-800 text-white relative overflow-hidden">
-      {/* Background effects */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-48 h-48 bg-gradient-to-r from-green-500 to-cyan-500 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+    <section id="journey" className="section py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 gradient-text">🛤️ My Journey</h2>
-          <p className="text-xl text-pink-200 max-w-3xl mx-auto leading-relaxed">
-            From curious innovator to AI pioneer - witness the evolution of cutting-edge expertise.
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">My Journey</h2>
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            From curious student to seasoned ML engineer - here's how my career has evolved.
           </p>
         </div>
 
