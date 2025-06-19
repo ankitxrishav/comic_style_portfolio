@@ -14,82 +14,85 @@ export default function Navigation() {
   return (
     <nav className="floating-nav fixed top-0 left-0 right-0 z-30 px-6 py-4">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <div className="text-white font-bold text-xl">Ankit Kumar</div>
+        <div className="text-white font-bold text-2xl">
+          <span className="gradient-text">AK</span>
+          <span className="text-purple-300 ml-2">ML Engineer</span>
+        </div>
         
-        <div className="hidden md:flex space-x-8">
+        <div className="hidden md:flex space-x-1 bg-white/5 rounded-full p-2 backdrop-blur-lg border border-white/10">
           <button
             onClick={() => scrollToSection("home")}
-            className="text-white hover:text-cyan-400 transition-colors"
+            className="px-4 py-2 rounded-full text-white hover:bg-purple-600/50 hover:text-purple-200 transition-all duration-300 font-semibold"
           >
             Home
           </button>
           <button
             onClick={() => scrollToSection("about")}
-            className="text-white hover:text-cyan-400 transition-colors"
+            className="px-4 py-2 rounded-full text-white hover:bg-pink-600/50 hover:text-pink-200 transition-all duration-300 font-semibold"
           >
             About
           </button>
           <button
             onClick={() => scrollToSection("projects")}
-            className="text-white hover:text-cyan-400 transition-colors"
+            className="px-4 py-2 rounded-full text-white hover:bg-cyan-600/50 hover:text-cyan-200 transition-all duration-300 font-semibold"
           >
             Projects
           </button>
           <button
             onClick={() => scrollToSection("journey")}
-            className="text-white hover:text-cyan-400 transition-colors"
+            className="px-4 py-2 rounded-full text-white hover:bg-green-600/50 hover:text-green-200 transition-all duration-300 font-semibold"
           >
             Journey
           </button>
           <button
             onClick={() => scrollToSection("contact")}
-            className="text-white hover:text-cyan-400 transition-colors"
+            className="px-4 py-2 rounded-full text-white hover:bg-orange-600/50 hover:text-orange-200 transition-all duration-300 font-semibold"
           >
             Contact
           </button>
         </div>
         
         <button
-          className="md:hidden text-white"
+          className="md:hidden text-white p-2 rounded-full hover:bg-purple-600/30 transition-colors"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
-          <i className="fas fa-bars text-xl"></i>
+          <i className={`fas ${isMobileMenuOpen ? 'fa-times' : 'fa-bars'} text-xl`}></i>
         </button>
       </div>
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden mt-4 bg-slate-900 rounded-lg p-4">
-          <div className="flex flex-col space-y-2">
+        <div className="md:hidden mt-4 glass-effect rounded-2xl p-6 border border-purple-500/30">
+          <div className="flex flex-col space-y-3">
             <button
               onClick={() => scrollToSection("home")}
-              className="text-white hover:text-cyan-400 transition-colors py-2 text-left"
+              className="text-white hover:text-purple-300 transition-all duration-300 py-3 px-4 text-left rounded-xl hover:bg-purple-600/20 font-semibold"
             >
-              Home
+              🏠 Home
             </button>
             <button
               onClick={() => scrollToSection("about")}
-              className="text-white hover:text-cyan-400 transition-colors py-2 text-left"
+              className="text-white hover:text-pink-300 transition-all duration-300 py-3 px-4 text-left rounded-xl hover:bg-pink-600/20 font-semibold"
             >
-              About
+              👨‍💻 About
             </button>
             <button
               onClick={() => scrollToSection("projects")}
-              className="text-white hover:text-cyan-400 transition-colors py-2 text-left"
+              className="text-white hover:text-cyan-300 transition-all duration-300 py-3 px-4 text-left rounded-xl hover:bg-cyan-600/20 font-semibold"
             >
-              Projects
+              🚀 Projects
             </button>
             <button
               onClick={() => scrollToSection("journey")}
-              className="text-white hover:text-cyan-400 transition-colors py-2 text-left"
+              className="text-white hover:text-green-300 transition-all duration-300 py-3 px-4 text-left rounded-xl hover:bg-green-600/20 font-semibold"
             >
-              Journey
+              🛤️ Journey
             </button>
             <button
               onClick={() => scrollToSection("contact")}
-              className="text-white hover:text-cyan-400 transition-colors py-2 text-left"
+              className="text-white hover:text-orange-300 transition-all duration-300 py-3 px-4 text-left rounded-xl hover:bg-orange-600/20 font-semibold"
             >
-              Contact
+              📞 Contact
             </button>
           </div>
         </div>
